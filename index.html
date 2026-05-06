@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMac Photo Booth</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MediaPipe Holistic -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Webcam video feed -->
+        <video class="input_video"></video>
+        <!-- Canvas for drawing hand landmarks -->
+        <canvas class="output_canvas" width="1280" height="720"></canvas>
+        
+        <!-- Old TV Effect Overlay -->
+        <div class="old-tv"></div>
+        
+        <!-- Emoji Frame overlay -->
+        <div id="emoji-frame" class="hidden">
+            <div class="emoji top-left"></div>
+            <div class="emoji top-right"></div>
+            <div class="emoji bottom-left"></div>
+            <div class="emoji bottom-right"></div>
+            <div class="emoji center-left"></div>
+            <div class="emoji center-right"></div>
+        </div>
+        
+        <!-- Loading UI -->
+        <div id="loading" class="loading">
+            Loading Camera & AI Model...
+        </div>
+        
+        <!-- Main Event Logo -->
+        <img src="SP_LOGO.png" alt="SP Logo" class="main-logo hidden" id="main-logo">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

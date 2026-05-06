@@ -1,0 +1,57 @@
+[debug] [2026-05-06T04:51:23.989Z] ----------------------------------------------------------------------
+[debug] [2026-05-06T04:51:23.991Z] Command:       /opt/homebrew/Cellar/node/24.10.0/bin/node /opt/homebrew/bin/firebase projects:list
+[debug] [2026-05-06T04:51:23.992Z] CLI Version:   14.24.2
+[debug] [2026-05-06T04:51:23.992Z] Platform:      darwin
+[debug] [2026-05-06T04:51:23.992Z] Node Version:  v24.10.0
+[debug] [2026-05-06T04:51:23.992Z] Time:          Wed May 06 2026 13:51:23 GMT+0900 (대한민국 표준시)
+[debug] [2026-05-06T04:51:23.992Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-05-06T04:51:23.993Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-05-06T04:51:24.011Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-06T04:51:24.011Z] > authorizing via signed-in user (phs@hcconline.or.kr)
+[debug] [2026-05-06T04:51:24.012Z] Checked if tokens are valid: false, expires at: 1777716381991
+[debug] [2026-05-06T04:51:24.012Z] Checked if tokens are valid: false, expires at: 1777716381991
+[debug] [2026-05-06T04:51:24.012Z] > refreshing access token with scopes: []
+[debug] [2026-05-06T04:51:24.013Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-05-06T04:51:24.013Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-05-06T04:51:24.204Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2026-05-06T04:51:24.204Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-05-06T04:51:24.205Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-05-06T04:51:24.356Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/opt/homebrew/lib/node_modules/firebase-tools/lib/auth.js:167:12)
+    at refreshTokens (/opt/homebrew/lib/node_modules/firebase-tools/lib/auth.js:591:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAccessToken (/opt/homebrew/lib/node_modules/firebase-tools/lib/apiv2.js:42:18)
+    at async Client.addAuthHeader (/opt/homebrew/lib/node_modules/firebase-tools/lib/apiv2.js:169:21)
+    at async Client.request (/opt/homebrew/lib/node_modules/firebase-tools/lib/apiv2.js:120:34)
+    at async getProjectPage (/opt/homebrew/lib/node_modules/firebase-tools/lib/management/projects.js:279:17)
+    at async getFirebaseProjectPage (/opt/homebrew/lib/node_modules/firebase-tools/lib/management/projects.js:296:23)
+    at async listFirebaseProjects (/opt/homebrew/lib/node_modules/firebase-tools/lib/management/projects.js:327:29)
+    at async Command.actionFn (/opt/homebrew/lib/node_modules/firebase-tools/lib/commands/projects-list.js:51:20)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
+[debug] [2026-05-06T04:51:24.391Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-05-06T04:51:24.391Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-05-06T05:32:27.737Z] ----------------------------------------------------------------------
+[debug] [2026-05-06T05:32:27.741Z] Command:       /usr/local/bin/node /usr/local/bin/firebase login --reauth
+[debug] [2026-05-06T05:32:27.742Z] CLI Version:   14.27.0
+[debug] [2026-05-06T05:32:27.742Z] Platform:      darwin
+[debug] [2026-05-06T05:32:27.742Z] Node Version:  v20.10.0
+[debug] [2026-05-06T05:32:27.742Z] Time:          Wed May 06 2026 14:32:27 GMT+0900 (대한민국 표준시)
+[debug] [2026-05-06T05:32:27.742Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=863267500&redirect_uri=http%3A%2F%2Flocalhost%3A9005&login_hint=phs%40hcconline.or.kr
+[info] 
+[info] Waiting for authentication...

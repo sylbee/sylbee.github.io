@@ -1,0 +1,197 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_video {
+    display: none; /* Hide the video element, we show the mirrored canvas */
+}
+
+.output_canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Mirror the webcam feed */
+    filter: sepia(0.2) saturate(1.4) contrast(1.1); /* Old TV color grading */
+    animation: tv-glitch 5s infinite;
+}
+
+/* Old TV Effect Overlay */
+.old-tv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Above canvas */
+    background: 
+        /* Scanlines */
+        linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.15)),
+        /* Vignette/Curved tube edge shadow */
+        radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);
+    background-size: 100% 6px, 100% 100%;
+    animation: tv-flicker 0.15s infinite;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5); /* CRT screen depth */
+}
+
+@keyframes tv-flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 0.85; }
+    100% { opacity: 0.95; }
+}
+
+@keyframes tv-glitch {
+    0%, 95%, 100% { filter: sepia(0.2) saturate(1.4) contrast(1.1); transform: scaleX(-1) skewX(0deg) translate(0,0); }
+    96% { filter: sepia(0.5) saturate(2) contrast(1.5) hue-rotate(20deg); transform: scaleX(-1) skewX(2deg) translate(-2px, 2px); }
+    97% { filter: sepia(0.1) saturate(1.2) contrast(0.8) hue-rotate(-20deg); transform: scaleX(-1) skewX(-2deg) translate(2px, -2px); }
+    98% { filter: sepia(0.3) saturate(1.6) contrast(1.3); transform: scaleX(-1) skewX(1deg) translate(-1px, 0); }
+}
+
+
+/* Main Event Logo */
+.main-logo {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 700px;
+    z-index: 10;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+}
+
+.main-logo.hidden {
+    display: none;
+}
+
+/* Glitch Appearance Transition */
+.glitch-in {
+    animation: glitch-entrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch-entrance {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-52%, 0) skewX(20deg);
+        filter: drop-shadow(20px 0 0 rgba(255,0,0,1)) drop-shadow(-20px 0 0 rgba(0,255,255,1));
+        clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%);
+    }
+    20% {
+        transform: translate(-46%, 0) skewX(-20deg);
+        filter: drop-shadow(-30px 0 0 rgba(255,0,0,1)) drop-shadow(30px 0 0 rgba(0,255,0,1)) drop-shadow(15px 0 0 rgba(0,0,255,1));
+        clip-path: polygon(0 45%, 100% 45%, 100% 65%, 0 65%);
+    }
+    30% {
+        transform: translate(-52%, 0) skewX(10deg);
+        filter: drop-shadow(15px 0 0 rgba(255,0,0,1)) drop-shadow(-15px 0 0 rgba(0,255,255,1));
+        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    }
+    40% {
+        transform: translate(-48%, 0);
+        filter: drop-shadow(-15px 0 0 rgba(255,0,0,1)) drop-shadow(15px 0 0 rgba(0,0,255,1));
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    50% {
+        transform: translate(-50%, 0);
+        filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.8));
+    }
+    55% {
+        transform: translate(-52%, 0) skewX(5deg);
+        filter: drop-shadow(20px 0 0 red) drop-shadow(-20px 0 0 cyan);
+        clip-path: polygon(0 20%, 100% 20%, 100% 25%, 0 25%);
+    }
+    60% {
+        transform: translate(-48%, 0) skewX(-5deg);
+        filter: drop-shadow(-20px 0 0 red) drop-shadow(20px 0 0 cyan);
+        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+    }
+    65% {
+        transform: translate(-50%, 0);
+        filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0) skew(0deg);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+    }
+}
+
+
+
+.loading {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: opacity 0.5s ease;
+}
+
+/* Emoji Frame */
+#emoji-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#emoji-frame.hidden {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+#emoji-frame.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.emoji {
+    position: absolute;
+    font-size: 8rem;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Position emojis around the frame */
+.top-left { top: 5%; left: 5%; animation-delay: 0.1s; }
+.top-right { top: 5%; right: 5%; animation-delay: 0.3s; }
+.bottom-left { bottom: 5%; left: 5%; animation-delay: 0.2s; }
+.bottom-right { bottom: 5%; right: 5%; animation-delay: 0.4s; }
+.center-left { top: 40%; left: 5%; animation-delay: 0.5s; }
+.center-right { top: 40%; right: 5%; animation-delay: 0.6s; }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg) scale(1.1);
+    }
+}
