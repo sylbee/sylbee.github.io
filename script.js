@@ -14,7 +14,7 @@ const hands = new Hands({locateFile: (file) => {
 
 hands.setOptions({
     maxNumHands: 6,
-    modelComplexity: 1, // Keep it light for RPi4
+    modelComplexity: 0, // Changed to 0 for Galaxy/mobile performance
     minDetectionConfidence: 0.5,
     minTrackingConfidence: 0.5
 });
@@ -267,8 +267,7 @@ const camera = new Camera(videoElement, {
     onFrame: async () => {
         await hands.send({image: videoElement});
     },
-    width: 1280,
-    height: 720
+    facingMode: 'user'
 });
 
 camera.start();
