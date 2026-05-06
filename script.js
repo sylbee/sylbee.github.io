@@ -267,7 +267,9 @@ const camera = new Camera(videoElement, {
     onFrame: async () => {
         await hands.send({image: videoElement});
     },
-    facingMode: 'user'
+    facingMode: 'user',
+    width: 640,
+    height: 480
 });
 
 camera.start();
